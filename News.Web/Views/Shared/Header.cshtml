@@ -1,0 +1,16 @@
+﻿@model News.Web.Models.NavViewModel
+
+<div class="container">
+	<div class="logo">News Radar</div>
+	<nav>
+		<a href="/" class="@(string.IsNullOrEmpty(Model.Topic) ? "active" : null)">Top stories</a>
+
+		@if (Model != null && Model.Topics != null)
+		{
+			foreach (var item in Model.Topics)
+			{
+				<a href="@Url.Action("topic", "home", new { id = @item })" class="@(item == Model.Topic ? "active" : null)">@(item == "science-and-nature" ? "Science and nature" : item)</a>
+			}
+		}
+	</nav>
+</div>

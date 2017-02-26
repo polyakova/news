@@ -1,0 +1,49 @@
+﻿@model string
+
+@{
+	Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@section js
+{
+	<script type="text/javascript" src="/js/plugins/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/jquery.tmpl.js"></script>	
+	<script type="text/javascript" src="/js/feed.js"></script>
+}
+
+@section css
+{
+	<link rel="stylesheet" href="/css/feed.css" />
+}
+
+@Html.Hidden("topic", Model)
+
+<section class="container">
+	<h1 class="capitalized">@(string.IsNullOrEmpty(Model) ? "Top stories" : Model == "science-and-nature" ? "Science and nature" : Model)</h1>
+	<div class="feed">
+		<img src="/img/ajax-loader.gif" class="loader" />
+	</div>
+	<div class="sources"></div>
+</section>
+
+<script id="article" type="text/x-jquery-tmpl">
+	<div class="article">
+		<div class="image" style="background-image: url(${urlToImage})"></div>
+		<div class="details">
+			<div><a href="${url}" target="_blank">${title}</a></div>
+			<div>
+				<p>${description}</p>
+			</div>
+			<div class="published">
+				${publishedAt}, ${author}
+			</div>
+		</div>
+	</div>
+</script>
+
+
+<script id="source" type="text/x-jquery-tmpl">
+	<a href="${url}" target="_blank">
+		<div class="source" style="background-image: url(${urlsToLogos["small"]})"></div>
+	</a>
+</script>

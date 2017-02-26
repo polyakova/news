@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>News Radar - My demo news reader</title>
+	<meta charset="utf-8" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+	@RenderSection("css", false)
+</head>
+<body>
+	@RenderSection("js", false)
+	<header>
+		@Html.Action("header", "home")
+	</header>
+	<main>
+		@RenderBody()
+	</main>
+	<footer></footer>
+</body>
+</html>
